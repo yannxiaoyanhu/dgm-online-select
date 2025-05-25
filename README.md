@@ -1,9 +1,9 @@
 # dgm-online-select
 Official repository of the paper "An Online Learning Approach to Prompt-based Selection of Generative Models" (ICML 2025)
 
-[Xiaoyan Hu](https://yannxiaoyanhu.github.io), [Ho-fung Leung](http://www.cse.cuhk.edu.hk/~lhf/), [Farzan Farnia](https://www.cse.cuhk.edu.hk/~farnia/Home.html) [[Paper]([https://arxiv.org/abs/2406.07451](https://arxiv.org/pdf/2410.13287))]
+[Xiaoyan Hu](https://yannxiaoyanhu.github.io), [Ho-fung Leung](http://www.cse.cuhk.edu.hk/~lhf/), [Farzan Farnia](https://www.cse.cuhk.edu.hk/~farnia/Home.html) [[Paper](https://arxiv.org/pdf/2410.13287)]
 
-![Figure](https://github.com/yannxiaoyanhu/dgm-online-eval/blob/main/Fig1.png)
+![Figure](https://github.com/yannxiaoyanhu/dgm-online-select/blob/main/Fig1.png)
 
 ## Usage Examples
 
