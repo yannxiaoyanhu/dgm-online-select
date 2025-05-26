@@ -22,6 +22,7 @@ The authors would like to acknowledge the following repositories:
 3. Stable Diffusion: [https://huggingface.co/CompVis/stable-diffusion-v1-4](https://huggingface.co/CompVis/stable-diffusion-v1-4), [https://huggingface.co/stabilityai/stable-diffusion-2](https://huggingface.co/stabilityai/stable-diffusion-2)
 4. UniDiffuser v1: [https://huggingface.co/thu-ml/unidiffuser-v1](https://huggingface.co/thu-ml/unidiffuser-v1)
 5. PixArt-$\alpha$: [https://github.com/PixArt-alpha/PixArt-alpha](https://github.com/PixArt-alpha/PixArt-alpha)
+6. DeepFloyd: [https://huggingface.co/DeepFloyd](https://huggingface.co/DeepFloyd)
 
 
 ## Citation
