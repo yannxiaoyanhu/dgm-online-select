@@ -32,12 +32,12 @@ class RFFKernel:
 
 class rff_ucb:
     def __init__(self, G: int, num_dim: int, num_rff_dim: int, delta=.05, kernel_method='rbf', kernel_para_gamma=1.,
-                 reg_alpha=1., **kwargs):
+                 reg_alpha=1., exp_eta=None, **kwargs):
         assert kernel_method in ['rbf']
 
         self.G = G
         self.num_dim = num_dim
-        self.exp_eta = 2. * np.log(2. * G / delta)
+        self.exp_eta = 2. * np.log(2. * G / delta) if exp_eta is None else exp_eta
         self.lrr_inverse_mat = [None for _ in range(G)]
         self.b = [None for _ in range(G)]
         self.weight_vector = [None for _ in range(G)]
