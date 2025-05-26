@@ -14,14 +14,14 @@ max_score_seq = np.max(score_seq, axis=0)
 
 
 parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
-parser.add_argument('--learner', type=str, default='kernel-ucb')
+parser.add_argument('--learner', type=str, default='pak-ucb')
 parser.add_argument('--kernel_method', type=str, default='poly')
 parser.add_argument('--kernel_para_c', type=float, default=1.)
 parser.add_argument('--kernel_para_d', type=float, default=3.)
 parser.add_argument('--kernel_para_gamma', type=float, default=1.)
 parser.add_argument('--reg_alpha', type=float, default=1.)
 parser.add_argument('--num_rff_dim', type=int, default=100)
-parser.add_argument('--exp_eta', type=float, default=None)
+parser.add_argument('--exp_para', type=float, default=None)
 parser.add_argument('--eval_epochs', type=int, default=20)
 parser.add_argument('--T', type=int, default=5000, help='Total number of generated samples')
 parser.add_argument('--seed', type=int, default=1234, help='Random seed')
@@ -42,11 +42,12 @@ def main():
     for epoch in range(1, num_epoch + 1):
 
         learner = LEARNER[args.learner](G=G, num_dim=num_dim,
-                                        kernel_method=args.kernel_method, reg_alpha=args.reg_alpha,
+                                        kernel_method=args.kernel_method,
                                         kernel_para_c=args.kernel_para_c,
                                         kernel_para_d=args.kernel_para_d,
                                         kernel_para_gamma=args.kernel_para_gamma,
-                                        num_rff_dim=args.num_rff_dim)
+                                        num_rff_dim=args.num_rff_dim,
+                                        reg_alpha=args.reg_alpha, exp_para=args.exp_para)
 
         for t in range(T):
             sample_idx_t = np.random.randint(contexts.shape[0])
