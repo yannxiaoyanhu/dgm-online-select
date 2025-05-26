@@ -8,6 +8,7 @@ Official repository of the paper "An Online Learning Approach to Prompt-based Se
 ## Usage Examples
 
 PAK-UCB-poly3: ```python test.py --learner pak-ucb --kernel_method poly```
+
 RFF-UCB: ```python test.py --learner rff-ucb --kernel_method rbf --num_rff_dim 100```
 
 Implementations of FD-UCB, IS-UCB and baseline methods can be found in algorithms.
