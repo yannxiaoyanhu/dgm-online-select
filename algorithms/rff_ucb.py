@@ -59,7 +59,7 @@ class rff_ucb:
         for g in range(self.G):
             mu_g = rff_context.dot(self.weight_vector[g])
             sigma_g = np.sqrt(rff_context @ self.lrr_inverse_mat[g] @ rff_context.T)
-            ucb_values[g] = mu_g + 2 * self.exp_eta * sigma_g
+            ucb_values[g] = mu_g + self.exp_eta * sigma_g
         return np.random.choice((np.where(ucb_values == np.max(ucb_values)))[0])
 
     def update_stats(self, g: int, context: np.array, reward: float):

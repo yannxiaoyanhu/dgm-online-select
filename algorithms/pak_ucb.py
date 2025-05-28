@@ -90,7 +90,7 @@ class pak_ucb:
             sig_g = kernel_vector_g.T @ self.krr_inverse_mat[g] @ kernel_vector_g
             sig_g = (self.krr_alpha ** -0.5) * np.sqrt(max(0., self.kernel_function(x1=context[0],
                                                                                     x2=context[0]) - sig_g))
-            ucb_values[g] = mu_g + 2 * self.exp_eta * sig_g
+            ucb_values[g] = mu_g + self.exp_eta * sig_g
         return np.random.choice((np.where(ucb_values == np.max(ucb_values)))[0])
 
     def update_stats(self, g: int, context: np.array, reward: float):
