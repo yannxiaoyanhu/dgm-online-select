@@ -38,7 +38,7 @@ class rff_ucb:
         self.G = G
         self.T = T
         self.num_dim = num_dim
-        self.exp_eta = np.sqrt(2. * np.log(4. * np.log(T) * G / delta)) if exp_eta is None else exp_eta
+        self.exp_eta = np.sqrt(2. * np.log(4. * T * G / delta)) if exp_eta is None else exp_eta
         self.lrr_inverse_mat = [None for _ in range(G)]
         self.b = [None for _ in range(G)]
         self.weight_vector = [None for _ in range(G)]
