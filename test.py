@@ -14,8 +14,8 @@ max_score_seq = np.max(score_seq, axis=0)
 
 
 parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
-parser.add_argument('--learner', type=str, default='pak-ucb')
-parser.add_argument('--kernel_method', type=str, default='poly')
+parser.add_argument('--learner', type=str, default='rff-ucb')
+parser.add_argument('--kernel_method', type=str, default='rbf')
 parser.add_argument('--kernel_para_c', type=float, default=1.)
 parser.add_argument('--kernel_para_d', type=float, default=3.)
 parser.add_argument('--kernel_para_gamma', type=float, default=1.)
@@ -41,7 +41,7 @@ def main():
 
     for epoch in range(1, num_epoch + 1):
 
-        learner = LEARNER[args.learner](G=G, num_dim=num_dim,
+        learner = LEARNER[args.learner](G=G, T=T, num_dim=num_dim,
                                         kernel_method=args.kernel_method,
                                         kernel_para_c=args.kernel_para_c,
                                         kernel_para_d=args.kernel_para_d,
