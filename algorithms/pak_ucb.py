@@ -44,13 +44,14 @@ def update_inverse(K_inv, X, x_new, kernel, alpha):
 
 
 class pak_ucb:
-    def __init__(self, G: int, num_dim: int, delta=.05,
+    def __init__(self, G: int, T: int, num_dim: int, delta=.05,
                  kernel_method='poly', reg_alpha=1., kernel_para_c=1., kernel_para_d=3., kernel_para_gamma=1.,
                  exp_eta=None, **kwargs):
         self.G = G
+        self.T = T
         self.num_dim = num_dim
         self.krr_alpha = reg_alpha
-        self.exp_eta = np.sqrt(2. * np.log(2. * G / delta)) if exp_eta is None else exp_eta
+        self.exp_eta = np.sqrt(2. * np.log(2. * np.log(T) * G / delta)) if exp_eta is None else exp_eta
         self.krr_inverse_mat = [None for _ in range(G)]
         self.krr_variable = [np.empty((1, num_dim,)) for _ in range(G)]
         self.krr_target = [np.empty((1,)) for _ in range(G)]
@@ -89,7 +90,7 @@ class pak_ucb:
             sig_g = kernel_vector_g.T @ self.krr_inverse_mat[g] @ kernel_vector_g
             sig_g = (self.krr_alpha ** -0.5) * np.sqrt(max(0., self.kernel_function(x1=context[0],
                                                                                     x2=context[0]) - sig_g))
-            ucb_values[g] = mu_g + self.exp_eta * sig_g
+            ucb_values[g] = mu_g + 2 * self.exp_eta * sig_g
         return np.random.choice((np.where(ucb_values == np.max(ucb_values)))[0])
 
     def update_stats(self, g: int, context: np.array, reward: float):

@@ -31,13 +31,14 @@ class RFFKernel:
 
 
 class rff_ucb:
-    def __init__(self, G: int, num_dim: int, num_rff_dim: int, delta=.05, kernel_method='rbf', kernel_para_gamma=1.,
+    def __init__(self, G: int, T: int, num_dim: int, num_rff_dim: int, delta=.05, kernel_method='rbf', kernel_para_gamma=1.,
                  reg_alpha=1., exp_eta=None, **kwargs):
         assert kernel_method in ['rbf']
 
         self.G = G
+        self.T = T
         self.num_dim = num_dim
-        self.exp_eta = np.sqrt(2. * np.log(2. * G / delta)) if exp_eta is None else exp_eta
+        self.exp_eta = np.sqrt(2. * np.log(4. * np.log(T) * G / delta)) if exp_eta is None else exp_eta
         self.lrr_inverse_mat = [None for _ in range(G)]
         self.b = [None for _ in range(G)]
         self.weight_vector = [None for _ in range(G)]
@@ -58,7 +59,7 @@ class rff_ucb:
         for g in range(self.G):
             mu_g = rff_context.dot(self.weight_vector[g])
             sigma_g = np.sqrt(rff_context @ self.lrr_inverse_mat[g] @ rff_context.T)
-            ucb_values[g] = mu_g + self.exp_eta * sigma_g
+            ucb_values[g] = mu_g + 2 * self.exp_eta * sigma_g
         return np.random.choice((np.where(ucb_values == np.max(ucb_values)))[0])
 
     def update_stats(self, g: int, context: np.array, reward: float):
