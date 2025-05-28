@@ -50,7 +50,7 @@ class pak_ucb:
         self.G = G
         self.num_dim = num_dim
         self.krr_alpha = reg_alpha
-        self.exp_eta = 2. * np.log(2. * G / delta) if exp_eta is None else exp_eta
+        self.exp_eta = np.sqrt(2. * np.log(2. * G / delta)) if exp_eta is None else exp_eta
         self.krr_inverse_mat = [None for _ in range(G)]
         self.krr_variable = [np.empty((1, num_dim,)) for _ in range(G)]
         self.krr_target = [np.empty((1,)) for _ in range(G)]
