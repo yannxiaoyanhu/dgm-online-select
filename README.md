@@ -3,7 +3,7 @@ Official repository of the paper "An Online Learning Approach to Prompt-based Se
 
 [Xiaoyan Hu](https://yannxiaoyanhu.github.io), [Ho-fung Leung](http://www.cse.cuhk.edu.hk/~lhf/), [Farzan Farnia](https://www.cse.cuhk.edu.hk/~farnia/Home.html) [[Paper](https://arxiv.org/pdf/2410.13287)]
 
-![Figure](https://github.com/yannxiaoyanhu/dgm-online-select/blob/main/ICML%20Fig1.pdf)
+![Figure](https://github.com/yannxiaoyanhu/dgm-online-select/blob/main/Fig1.pdf)
 
 ## Usage Examples
 
