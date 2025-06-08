@@ -1,5 +1,5 @@
 # dgm-online-select
-Official repository of the paper "An Online Learning Approach to Prompt-based Selection of Generative Models" (ICML 2025)
+Official repository of the paper "An Online Learning Approach to Prompt-based Selection of Generative Models and LLMs" (ICML 2025)
 
 [Xiaoyan Hu](https://yannxiaoyanhu.github.io), [Ho-fung Leung](http://www.cse.cuhk.edu.hk/~lhf/), [Farzan Farnia](https://www.cse.cuhk.edu.hk/~farnia/Home.html) [[Paper](https://arxiv.org/pdf/2410.13287)]
 
