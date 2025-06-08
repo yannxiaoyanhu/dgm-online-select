@@ -3,11 +3,13 @@ Official repository of the paper "An Online Learning Approach to Prompt-based Se
 
 [Xiaoyan Hu](https://yannxiaoyanhu.github.io), [Ho-fung Leung](http://www.cse.cuhk.edu.hk/~lhf/), [Farzan Farnia](https://www.cse.cuhk.edu.hk/~farnia/Home.html) [[Paper](https://arxiv.org/pdf/2410.13287)]
 
+![Figure](https://github.com/yannxiaoyanhu/dgm-online-select/blob/main/Fig1.pdf)
+
 ## Usage Examples
 
-PAK-UCB-poly3: ```python test.py --learner pak-ucb --kernel_method poly```
+PAK-UCB-poly3: ```python test.py --learner pak-ucb --kernel_method poly --kernel_para_gamma 5.0```
 
-RFF-UCB: ```python test.py --learner rff-ucb --kernel_method rbf --num_rff_dim 100```
+RFF-UCB: ```python test.py --learner rff-ucb --kernel_method rbf --num_rff_dim 200```
 
 Implementations of FD-UCB, IS-UCB and baseline methods can be found in algorithms.
 
