@@ -7,10 +7,10 @@ from algorithms.aux import LEARNER
 
 G = 5
 num_dim = 512
-score_seq = np.random.random((G, 1000))
-best_model_on_avg = np.argmax(np.mean(score_seq, axis=1), axis=0)
+score_seq = np.random.random((G, 1000, 5))
+best_model_on_avg = np.argmax(np.mean(np.mean(score_seq, axis=2), axis=1), axis=0)
 contexts = np.random.randn(1000, num_dim)
-max_score_seq = np.max(score_seq, axis=0)
+max_score_seq = np.max(np.mean(score_seq, axis=2), axis=0)
 
 
 parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
@@ -20,8 +20,9 @@ parser.add_argument('--kernel_para_c', type=float, default=1.)
 parser.add_argument('--kernel_para_d', type=float, default=3.)
 parser.add_argument('--kernel_para_gamma', type=float, default=1.)
 parser.add_argument('--reg_alpha', type=float, default=1.)
-parser.add_argument('--num_rff_dim', type=int, default=100)
-parser.add_argument('--exp_para', type=float, default=None)
+parser.add_argument('--num_rff_dim', type=int, default=200)
+parser.add_argument('--rff_version', type=str, default='2D')
+parser.add_argument('--exp_para', type=float, default=1.)
 parser.add_argument('--eval_epochs', type=int, default=20)
 parser.add_argument('--T', type=int, default=5000, help='Total number of generated samples')
 parser.add_argument('--seed', type=int, default=1234, help='Random seed')
@@ -46,17 +47,17 @@ def main():
                                         kernel_para_c=args.kernel_para_c,
                                         kernel_para_d=args.kernel_para_d,
                                         kernel_para_gamma=args.kernel_para_gamma,
-                                        num_rff_dim=args.num_rff_dim,
+                                        num_rff_dim=args.num_rff_dim, rff_version=args.rff_version,
                                         reg_alpha=args.reg_alpha, exp_para=args.exp_para)
 
         for t in range(T):
             sample_idx_t = np.random.randint(contexts.shape[0])
             context_t = contexts[sample_idx_t].reshape(1, -1)
-            best_model_on_avg_score_t = score_seq[best_model_on_avg][sample_idx_t]
+            best_model_on_avg_score_t = np.random.choice(score_seq[best_model_on_avg][sample_idx_t])
             max_score_t = max_score_seq[sample_idx_t]
 
             model_t = learner.select_arm(context=context_t)
-            reward_t = score_seq[model_t][sample_idx_t]
+            reward_t = np.random.choice(score_seq[model_t][sample_idx_t])
             learner.update_stats(g=model_t, context=context_t, reward=reward_t)
 
             o2b[t:] += reward_t - best_model_on_avg_score_t
