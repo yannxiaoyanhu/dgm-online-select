@@ -1,5 +1,5 @@
 # dgm-online-select
-Official repository of the paper "An Online Learning Approach to Prompt-based Selection of Generative Models and LLMs" (ICML 2025)
+Official repository of the paper "PAK-UCB Contextual Bandit: An Online Learning Approach to Prompt-based Selection of Generative Models and LLMs" (ICML 2025)
 
 [Xiaoyan Hu](https://yannxiaoyanhu.github.io), [Ho-fung Leung](http://www.cse.cuhk.edu.hk/~lhf/), [Farzan Farnia](https://www.cse.cuhk.edu.hk/~farnia/Home.html) [[Paper](https://arxiv.org/pdf/2410.13287)]
 
@@ -26,13 +26,12 @@ The authors would like to acknowledge the following repositories:
 
 ## Citation
 ```
-@misc{hu2025onlinelearningapproachpromptbased,
-      title={An Online Learning Approach to Prompt-based Selection of Generative Models}, 
-      author={Xiaoyan Hu and Ho-fung Leung and Farzan Farnia},
-      year={2025},
-      eprint={2410.13287},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2410.13287}, 
+@inproceedings{
+hu2025an,
+title={An Online Learning Approach to Prompt-based Selection of Generative Models and {LLM}s},
+author={Xiaoyan Hu and Ho-fung Leung and Farzan Farnia},
+booktitle={Forty-second International Conference on Machine Learning},
+year={2025},
+url={https://openreview.net/forum?id=mqDgNdiTai}
 }
 ```
